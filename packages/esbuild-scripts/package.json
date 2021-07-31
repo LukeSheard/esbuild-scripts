@@ -21,7 +21,7 @@
     "dotenv": "^10.0.0",
     "dotenv-expand": "^5.1.0",
     "esbuild": "^0.12.17",
-    "escape-string-regexp": "^4.0.0",
+    "escape-string-regexp": "^5.0.0",
     "express": "^4.17.1",
     "express-ws": "^5.0.2",
     "fs-extra": "^10.0.0",
