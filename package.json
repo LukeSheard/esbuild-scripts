@@ -37,7 +37,7 @@
     "@types/prompts": "^2.0.14",
     "@types/strip-ansi": "^5.2.1",
     "@types/tmp": "^0.2.1",
-    "eslint": "^7.31.0",
+    "eslint": "^7.32.0",
     "eslint-config-modular-app": "^1.0.2",
     "husky": "^7.0.1",
     "lint-staged": "^11.1.1",
