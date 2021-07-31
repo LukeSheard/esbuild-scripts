@@ -1,0 +1,4 @@
+/packages/*/build
+/packages/example
+/packages/esbuild-scripts/index.d.ts
+/packages/esbuild-scripts/src/plugins/css-modules.tsx

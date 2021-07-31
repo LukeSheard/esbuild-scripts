@@ -1,0 +1,56 @@
+{
+  "name": "esbuild-scripts",
+  "private": true,
+  "workspaces": [
+    "packages/**"
+  ],
+  "scripts": {
+    "check:format": "prettier --check .",
+    "check:lint": "yarn lint .",
+    "check:typings": "tsc --noEmit",
+    "lint": "eslint --cache --ext .ts,.tsx --max-warnings 0",
+    "postinstall": "patch-package && husky install",
+    "build": "yarn --cwd packages/esbuild-scripts tsc",
+    "release": "yarn build && changeset publish",
+    "esbuild-scripts": "ts-node packages/esbuild-scripts/src/index.ts"
+  },
+  "description": "",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@changesets/cli": "^2.16.0",
+    "@manypkg/cli": "^0.18.0",
+    "@types/babel-code-frame": "^6.20.5",
+    "@types/chalk": "^2.2.0",
+    "@types/cross-spawn": "^6.0.2",
+    "@types/escape-string-regexp": "^2.0.1",
+    "@types/express": "^4.17.13",
+    "@types/express-ws": "^3.0.1",
+    "@types/fs-extra": "^9.0.12",
+    "@types/global-modules": "^2.0.0",
+    "@types/html-minifier-terser": "^5.1.2",
+    "@types/is-ci": "^3.0.0",
+    "@types/jest": "^26.0.24",
+    "@types/node": "^16.4.8",
+    "@types/parse5": "^6.0.1",
+    "@types/prompts": "^2.0.14",
+    "@types/strip-ansi": "^5.2.1",
+    "@types/tmp": "^0.2.1",
+    "eslint": "^7.31.0",
+    "eslint-config-modular-app": "^1.0.2",
+    "husky": "^7.0.1",
+    "lint-staged": "^11.1.1",
+    "patch-package": "^6.4.7",
+    "prettier": "^2.3.2",
+    "ts-node": "^10.1.0",
+    "typescript": "^4.3.5"
+  },
+  "eslintConfig": {
+    "extends": "modular-app"
+  },
+  "lint-staged": {
+    "*": "manypkg fix && yarn check:format --write",
+    ".{ts,tsx}": "yarn check:lint"
+  }
+}
