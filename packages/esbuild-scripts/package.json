@@ -10,6 +10,11 @@
     "index.d.ts",
     "scripts"
   ],
+  "repository": {
+    "directory": "packages/esbuild-scripts",
+    "type": "git",
+    "url": "git@github.com:LukeSheard/esbuild-scripts.git"
+  },
   "dependencies": {
     "@schemastore/package": "0.0.6",
     "@svgr/core": "^5.5.0",
