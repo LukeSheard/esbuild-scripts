@@ -28,7 +28,7 @@
     "global-modules": "^2.0.0",
     "html-minifier-terser": "^5.1.1",
     "is-ci": "^3.0.0",
-    "is-root": "^2.0.0",
+    "is-root": "^3.0.0",
     "memoize-one": "^5.2.1",
     "open": "^8.2.1",
     "parse5": "^6.0.1",
