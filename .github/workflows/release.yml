@@ -9,14 +9,16 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
-
+    strategy:
+      matrix:
+        registry: ["https://registry.npmjs.org/", "https://npm.pkg.github.com"]
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js
         uses: actions/setup-node@v2.3.0
         with:
           node-version: 14.x
-          registry-url: https://npm.pkg.github.com
+          registry-url: ${{ matrix.registry }}
           cache: "yarn"
 
       - name: Install Dependencies
