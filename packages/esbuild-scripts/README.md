@@ -21,7 +21,7 @@
 ## Creating an App
 
 ```sh
-yarn create esbuild-app my-app
+yarn create @lukesheard/esbuild-app my-app
 cd my-app
 yarn start
 ```
@@ -32,7 +32,7 @@ If you've previously installed `create-esbuild-app` globally you can run `yarn g
 by supplying a `--template` argument like so
 
 ```sh
-yarn create esbuild-app my-app --template my-template
+yarn create @lukesheard/esbuild-app my-app --template my-template
 ```
 
 Supplying an empty template will default to the JavaScript template from `create-react-app`. This is because in most instances I've noticed users default to this template anyway - so I wanted to abstract this in a way which made it simple to pick convetional defaults.
