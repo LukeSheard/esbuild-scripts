@@ -2,6 +2,7 @@ import * as esbuild from "esbuild";
 import chalk from "chalk";
 import * as express from "express";
 import ws from "express-ws";
+import * as fs from "fs/promises";
 import * as http from "http";
 import * as path from "path";
 import * as tmp from "tmp";
@@ -16,6 +17,7 @@ import getClientEnvironment, {
 import cssModulesPlugin from "../plugins/css-modules";
 import svgrPlugin from "../plugins/svgr";
 import incrementalCompilePlugin from "../plugins/incremental-compile";
+import incrementalReporterPlugin from "../plugins/incremental-reporter";
 import websocketReloadPlugin from "../plugins/ws-reload";
 
 import choosePort from "../utils/choose-port";
@@ -139,31 +141,56 @@ class DevServer {
   private hostRuntime = memoize(async () => {
     const runtimeDir = path.join(__dirname, "..", "runtime");
 
-    const result = await esbuild.build({
-      entryPoints: [runtimeDir],
-      bundle: true,
-      resolveExtensions: paths.moduleFileExtensions.map(
-        (extension) => `.${extension}`
-      ),
-      sourcemap: true,
-      absWorkingDir: paths.appPath,
-      format: "esm",
-      target: "es2015",
-      color: !isCi,
-      define: this.env.stringified,
-      watch: true,
-      write: true,
-      plugins: [websocketReloadPlugin("runtime", this.ws.getWss())],
-      outbase: runtimeDir,
-      outdir: path.join(this.outdir, "_runtime"),
-      publicPath: (await this.urls()).localUrlForBrowser,
-    });
+    const runtimeDirFiles = await fs.readdir(runtimeDir);
+    const indexFiles = runtimeDirFiles.filter((p) => p.startsWith("index"));
+    if (indexFiles.length !== 1) {
+      throw new Error(`Found multiple possible entry files`);
+    }
+    const entryPoint = indexFiles[0];
 
-    return result;
+    try {
+      return await esbuild.build({
+        entryPoints: [path.join(runtimeDir, entryPoint)],
+        bundle: true,
+        resolveExtensions: paths.moduleFileExtensions.map(
+          (extension) => `.${extension}`
+        ),
+        sourcemap: true,
+        absWorkingDir: paths.appPath,
+        format: "esm",
+        target: "es2015",
+        logLevel: "silent",
+        color: !isCi,
+        define: this.env.stringified,
+        watch: true,
+        write: true,
+        plugins: [
+          websocketReloadPlugin("runtime", this.ws.getWss()),
+          incrementalReporterPlugin(),
+        ],
+        outbase: runtimeDir,
+        outdir: path.join(this.outdir, "_runtime"),
+        publicPath: (await this.urls()).localUrlForBrowser,
+      });
+    } catch (e) {
+      const result = e as esbuild.BuildFailure;
+      logger.log(chalk.red("Failed to compile runtime.\n"));
+      const logs = result.errors.concat(result.warnings).map(async (m) => {
+        logger.log(await formatError(m));
+      });
+
+      await Promise.all(logs);
+
+      throw new Error(`Failed to compile runtime`);
+    }
   });
 
   private runEsbuild = async (watch: boolean) => {
-    const plugins: esbuild.Plugin[] = [cssModulesPlugin, svgrPlugin()];
+    const plugins: esbuild.Plugin[] = [
+      cssModulesPlugin,
+      svgrPlugin(),
+      incrementalReporterPlugin(),
+    ];
     let resolveIntialBuild;
     if (watch) {
       const { plugin, initialBuildPromise } = incrementalCompilePlugin(
