@@ -1,5 +1,4 @@
 import ErrorOverlay from "react-error-overlay";
-import { format } from "url";
 import stripAnsi from "strip-ansi";
 
 const isFirstCompilation: Record<string, boolean> = {};
@@ -34,16 +33,9 @@ ErrorOverlay.startReportingRuntimeErrors({
   filename: "/index.js",
 });
 
-const connection = new WebSocket(
-  format({
-    protocol: window.location.protocol === "https:" ? "wss" : "ws",
-    hostname: window.location.hostname,
-    port: window.location.port,
-    // Hardcoded in WebpackDevServer
-    pathname: "/_ws",
-    slashes: true,
-  })
-);
+const url = new URL("/_ws", window.location.href);
+url.protocol = url.protocol === "https:" ? "wss:" : "ws:";
+const connection = new WebSocket(url.toString());
 
 // Unlike WebpackDevServer client, we won't try to reconnect
 // to avoid spamming the console. Disconnect usually happens
