@@ -38,7 +38,7 @@
     "@types/strip-ansi": "^5.2.1",
     "@types/tmp": "^0.2.1",
     "eslint": "^7.32.0",
-    "eslint-config-modular-app": "^1.0.3",
+    "eslint-config-modular-app": "^1.0.5",
     "husky": "^7.0.2",
     "lint-staged": "^11.1.2",
     "patch-package": "^6.4.7",
