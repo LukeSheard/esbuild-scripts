@@ -31,7 +31,7 @@
     "express-ws": "^5.0.2",
     "fs-extra": "^10.0.0",
     "global-modules": "^2.0.0",
-    "html-minifier-terser": "^5.1.1",
+    "html-minifier-terser": "^6.0.2",
     "is-ci": "^3.0.0",
     "is-root": "^2.0.0",
     "memoize-one": "^5.2.1",
