@@ -29,7 +29,7 @@
     "@types/express-ws": "^3.0.1",
     "@types/fs-extra": "^9.0.12",
     "@types/global-modules": "^2.0.0",
-    "@types/html-minifier-terser": "^5.1.2",
+    "@types/html-minifier-terser": "^6.0.0",
     "@types/is-ci": "^3.0.0",
     "@types/jest": "^27.0.1",
     "@types/node": "^16.7.10",
