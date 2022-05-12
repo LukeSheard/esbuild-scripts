@@ -25,7 +25,7 @@
     "detect-port-alt": "^1.1.6",
     "dotenv": "^10.0.0",
     "dotenv-expand": "^5.1.0",
-    "esbuild": "^0.12.24",
+    "esbuild": "^0.14.39",
     "escape-string-regexp": "^4.0.0",
     "express": "^4.17.1",
     "express-ws": "^5.0.2",
