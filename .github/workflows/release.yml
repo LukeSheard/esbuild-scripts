@@ -10,6 +10,7 @@ jobs:
     name: Release
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         registry: ["https://registry.npmjs.org/", "https://npm.pkg.github.com"]
     steps:
