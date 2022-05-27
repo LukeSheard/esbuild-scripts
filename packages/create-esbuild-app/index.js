@@ -45,7 +45,6 @@ if (major < 12) {
       "typescript"
     )
     .option("--use-npm")
-    .option("--use-pnp")
     .allowUnknownOption()
 
     .action((name, options) => {
@@ -55,9 +54,7 @@ if (major < 12) {
         return exec(
           `${name} --scripts-version=${SCRIPTS_VERSION} ${
             options.useNpm ? "--use-npm" : ""
-          } ${options.useNpm ? "--use-pnpm" : ""} ${
-            options.template ? `--template ${options.template}` : ""
-          }`
+          } ${options.template ? `--template ${options.template}` : ""}`
         );
       }
     })
