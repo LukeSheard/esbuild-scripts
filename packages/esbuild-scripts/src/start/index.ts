@@ -125,7 +125,7 @@ class DevServer {
           resolve(this);
         });
       } catch (err) {
-        logger.error(err);
+        logger.error(err as string);
         reject(err);
       }
     });
