@@ -10,13 +10,18 @@ import * as paths from "../config/paths";
 import * as logger from "../utils/logger";
 import { formatError } from "../utils/format-error";
 
+import sassPlugin from "esbuild-sass-plugin";
 import cssModulesPlugin from "../plugins/css-modules";
 import svgrPlugin from "../plugins/svgr";
 import checkRequiredFiles from "../utils/check-required-files";
 import printHostingInstructions from "./print-hosting-instructions";
 import { createIndex } from "../api";
 
-const plugins: esbuild.Plugin[] = [cssModulesPlugin, svgrPlugin()];
+const plugins: esbuild.Plugin[] = [
+  cssModulesPlugin,
+  svgrPlugin(),
+  sassPlugin(),
+];
 
 void (async () => {
   if (checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {

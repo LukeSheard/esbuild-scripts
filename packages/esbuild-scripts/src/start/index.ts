@@ -14,6 +14,7 @@ import getClientEnvironment, {
   ClientEnvironment,
 } from "../config/get-client-environment";
 
+import sassPlugin from "esbuild-sass-plugin";
 import cssModulesPlugin from "../plugins/css-modules";
 import svgrPlugin from "../plugins/svgr";
 import incrementalCompilePlugin from "../plugins/incremental-compile";
@@ -190,6 +191,7 @@ class DevServer {
       cssModulesPlugin,
       svgrPlugin(),
       incrementalReporterPlugin(),
+      sassPlugin(),
     ];
     let resolveIntialBuild;
     if (watch) {
