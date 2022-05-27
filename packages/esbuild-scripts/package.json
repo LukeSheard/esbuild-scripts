@@ -39,7 +39,7 @@
     "open": "^8.2.1",
     "parse5": "^6.0.1",
     "postcss": "^8.3.6",
-    "postcss-modules": "^4.2.2",
+    "postcss-modules": "^4.3.1",
     "prompts": "^2.4.1",
     "react-error-overlay": "^6.0.9",
     "strip-ansi": "^7.0.0",
