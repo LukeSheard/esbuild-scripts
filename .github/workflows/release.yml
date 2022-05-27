@@ -19,11 +19,19 @@ jobs:
         uses: actions/setup-node@v3.2.0
         with:
           node-version: 14.x
-          registry-url: ${{ matrix.registry }}
           cache: "yarn"
 
       - name: Install Dependencies
         run: yarn --frozen-lockfile
+        
+      - name: Update Registry
+        run: |
+          cat << EOF > "$HOME/.npmrc"
+            registry=$process.env.REGISTRY
+            @lukesheard:registry=$process.env.REGISTRY
+          EOF
+        env:
+          REGISTRY: ${{ matrix.registry }}
 
       - name: Create Release Pull Request or Publish to npm
         id: changesets
@@ -34,3 +42,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          
