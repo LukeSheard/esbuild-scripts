@@ -24,7 +24,7 @@
     "cross-spawn": "^7.0.3",
     "detect-port-alt": "^1.1.6",
     "dotenv": "^10.0.0",
-    "dotenv-expand": "^5.1.0",
+    "dotenv-expand": "^8.0.3",
     "esbuild": "^0.14.40",
     "esbuild-sass-plugin": "^2.2.6",
     "escape-string-regexp": "^4.0.0",
