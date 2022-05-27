@@ -1,5 +1,16 @@
 # @lukesheard/esbuild-scripts
 
+## 5.0.0
+
+### Major Changes
+
+- 09da609: Release version 5.0.0.
+
+### Patch Changes
+
+- fff1049: Bump dotenv-expand from 5.1.0 to 8.0.3
+- 32ddb08: Bump postcss-modules from 4.2.2 to 4.3.1
+
 ## 4.0.2
 
 ### Patch Changes
