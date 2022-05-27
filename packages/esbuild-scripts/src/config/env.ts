@@ -1,5 +1,5 @@
 import * as dotenv from "dotenv";
-import dotenvExpand from "dotenv-expand";
+import { expand } from "dotenv-expand";
 import * as fs from "fs";
 import * as paths from "./paths";
 
@@ -27,7 +27,7 @@ const dotenvFiles: string[] = [
 // https://github.com/motdotla/dotenv
 // https://github.com/motdotla/dotenv-expand
 dotenvFiles.forEach((dotenvFile) => {
-  dotenvExpand(
+  expand(
     dotenv.config({
       path: dotenvFile,
     })
