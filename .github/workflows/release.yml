@@ -20,15 +20,15 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v3.1.1
         with:
-          node-version: '14.17.0'
+          node-version: "14.17.0"
           registry-url: https://registry.npmjs.org/
-          cache: 'yarn'
+          cache: "yarn"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Install Dependencies
         run: yarn --frozen-lockfile
-        
+
       - name: Build
         run: yarn build
 
@@ -42,4 +42,3 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          
