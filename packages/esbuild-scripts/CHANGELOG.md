@@ -1,5 +1,12 @@
 # @lukesheard/esbuild-scripts
 
+## 5.0.1
+
+### Patch Changes
+
+- 2db9faf: Bump express from 4.17.1 to 4.18.1
+- f5b4857: Bump ws from 8.2.1 to 8.7.0
+
 ## 5.0.0
 
 ### Major Changes
