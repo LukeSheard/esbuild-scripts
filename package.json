@@ -20,7 +20,7 @@
   "license": "ISC",
   "dependencies": {
     "@changesets/cli": "^2.22.0",
-    "@manypkg/cli": "^0.18.0",
+    "@manypkg/cli": "^0.19.1",
     "@types/babel-code-frame": "^6.20.5",
     "@types/chalk": "^2.2.0",
     "@types/cross-spawn": "^6.0.2",
