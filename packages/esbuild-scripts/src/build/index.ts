@@ -42,7 +42,7 @@ void (async () => {
   const html = await createIndex(env.raw, false);
   await fs.writeFile(
     path.join(paths.appBuild, "index.html"),
-    minimize.minify(html, {
+    await minimize.minify(html, {
       html5: true,
       collapseBooleanAttributes: true,
       collapseWhitespace: true,
