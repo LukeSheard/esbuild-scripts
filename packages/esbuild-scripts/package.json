@@ -37,7 +37,7 @@
     "is-root": "^2.0.0",
     "memoize-one": "^5.2.1",
     "open": "^8.2.1",
-    "parse5": "^6.0.1",
+    "parse5": "^7.1.1",
     "postcss": "^8.3.6",
     "postcss-modules": "^4.3.1",
     "prompts": "^2.4.1",
